@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import com.sanqing.bean.Employee;
 import com.sanqing.dao.EmployeeDAO;
 import com.sanqing.util.DBConnection;
@@ -13,7 +12,27 @@ import com.sanqing.util.DBConnection;
 public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public void addEmployee(Employee employee) {
-		
+		Connection conn=DBConnection.getConnection();
+		String insertSQL="insert into tb_employee values (?,?,?,?,?,?,?,?,?)";
+		PreparedStatement pstmt=null;		
+		try{
+			pstmt=conn.prepareStatement(insertSQL);
+			pstmt.setInt(1,employee.getEmployeeID());
+			pstmt.setString(2, employee.getEmployeeName());
+			pstmt.setBoolean(3, employee.isEmployeeSex());
+			pstmt.setDate(4, new java.sql.Date(employee.getEmployeeBirth().getTime()));
+			pstmt.setString(5, employee.getEmployeePhone());
+			pstmt.setString(6, employee.getEmployeePlace());
+			pstmt.setDate(7, new java.sql.Date(employee.getJoinTime().getTime()));
+			pstmt.setString(8, employee.getPassword());
+			pstmt.setBoolean(9, employee.isLead());
+			pstmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 	}
 
 	public void deleteEmployee(int employeeID) {

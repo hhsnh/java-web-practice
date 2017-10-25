@@ -8,6 +8,10 @@
     <servlet-name>StatusRecognise</servlet-name>
     <servlet-class>com.sanqing.servlet.StatusRecognise</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>AddEmployee</servlet-name>
+    <servlet-class>com.sanqing.servlet.AddEmployee</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>MsgPublish</servlet-name>
     <servlet-class>com.sanqing.servlet.MsgPublish</servlet-class>
@@ -35,6 +39,10 @@
   <servlet-mapping>
     <servlet-name>StatusRecognise</servlet-name>
     <url-pattern>/StatusRecogniseAction</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>AddEmployee</servlet-name>
+    <url-pattern>/AddEmployeeAction</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>MsgPublish</servlet-name>
