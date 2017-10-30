@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import com.sanqing.bean.Employee;
 import com.sanqing.dao.EmployeeDAO;
 import com.sanqing.util.DBConnection;
+import com.sanqing.util.Page;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
 
@@ -39,8 +41,41 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		
 	}
 
-	public List<Employee> findAllEmployee() {
-		return null;
+	public List<Employee> findAllEmployee(Page page) {
+		Connection conn = DBConnection.getConnection();
+		String findSql="select * from tb_employee order by employeeID limit ?,?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Employee> employees = new ArrayList<Employee>();
+		
+		try {
+			pstmt = conn.prepareStatement(findSql);
+			pstmt.setInt(1, page.getBeginIndex());
+			pstmt.setInt(2, page.getEveryPage());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Employee employee = new Employee();
+				employee.setEmployeeID(rs.getInt(1));
+				employee.setEmployeeName(rs.getString(2));
+				employee.setEmployeeSex(rs.getBoolean(3));
+				employee.setEmployeeBirth(rs.getDate(4));
+				employee.setEmployeePhone(rs.getString(5));
+				employee.setEmployeePlace(rs.getString(6));
+				employee.setJoinTime(rs.getDate(7));
+				employee.setPassword(rs.getString(8));
+				employee.setLead(rs.getBoolean(9));
+				employees.add(employee);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
+		return employees;
 	}
 
 	public Employee findEmployeeById(int employeeID) {
@@ -77,6 +112,32 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 	public void updateEmployee(Employee employee) {
 		
+	}
+
+	@Override
+	public int findAllEmpCount() {
+		// TODO Auto-generated method stub
+		int count = 0;
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		String querySQL = "select count(*) from tb_employee";
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(querySQL);
+			rs = pstmt.executeQuery(querySQL);
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBConnection.close(rs);
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
+		
+		return count;
 	}
 	
 }

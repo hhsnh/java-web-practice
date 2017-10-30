@@ -34,7 +34,7 @@
   <li class="normal"><a urn="jsmenu2" rel="conmenu" href="publishNewMsg.jsp">发布新消息</a></li>
   <li class="normal"><a urn="jsmenu3" rel="conmenu" href="statusRecognise.jsp">身份识别</a></li>
   <c:if test="${employee.lead}">
-  <li class="normal"><a urn="jsmenu4" rel="conmenu" href="stuffManage.jsp">员工管理</a></li>
+  <li class="normal"><a urn="jsmenu4" rel="conmenu" href="GetEmployee">员工管理</a></li>
   </c:if>
   </ul>
 </div>

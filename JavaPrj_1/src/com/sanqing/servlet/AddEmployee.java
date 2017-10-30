@@ -21,7 +21,8 @@ public class AddEmployee extends HttpServlet {
 			throws ServletException, IOException {
 		  request.setCharacterEncoding("UTF-8");
 		ServletContext servletContext = getServletContext();	//获得ServletContex
-		RequestDispatcher dispatcher = null;					
+		RequestDispatcher dispatcher = null;
+
 		int employeeID = Integer.parseInt(request.getParameter("employeeID"));	//接受员工编号参数
 		
 		String employeeName = request.getParameter("employeeName");		
@@ -78,7 +79,7 @@ public class AddEmployee extends HttpServlet {
 				}finally{
 					request.setAttribute("error", "新增员工失败!");
 					dispatcher = servletContext.
-							getRequestDispatcher("/stuffManage.jsp");
+							getRequestDispatcher("/GetEmployee");
 				}
 			}
 		}

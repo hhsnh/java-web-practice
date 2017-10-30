@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet>
     <servlet-name>StatusRecognise</servlet-name>
     <servlet-class>com.sanqing.servlet.StatusRecognise</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>AddEmployee</servlet-name>
     <servlet-class>com.sanqing.servlet.AddEmployee</servlet-class>
   </servlet>
@@ -19,6 +15,10 @@
   <servlet>
     <servlet-name>GetMessageList</servlet-name>
     <servlet-class>com.sanqing.servlet.GetMessageList</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetEmployee</servlet-name>
+    <servlet-class>com.sanqing.servlet.GetEmployee</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GetMessage</servlet-name>
@@ -32,15 +32,11 @@
     <servlet-name>CommitCriticism</servlet-name>
     <servlet-class>com.sanqing.servlet.CommitCriticism</servlet-class>
   </servlet>
-
-
-
-
   <servlet-mapping>
     <servlet-name>StatusRecognise</servlet-name>
     <url-pattern>/StatusRecogniseAction</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddEmployee</servlet-name>
     <url-pattern>/AddEmployeeAction</url-pattern>
   </servlet-mapping>
@@ -64,7 +60,12 @@
     <servlet-name>CommitCriticism</servlet-name>
     <url-pattern>/CommitCriticism</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>GetEmployee</servlet-name>
+    <url-pattern>/GetEmployee</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+
 </web-app>
