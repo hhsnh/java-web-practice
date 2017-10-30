@@ -73,11 +73,12 @@ public class AddEmployee extends HttpServlet {
 				EmployeeDAO employeeDAO = 
 					EmployeeDAOFactory.getEmployeeDAOInstance();//获得DAO实现类实例
 				try{
-				employeeDAO.addEmployee(employee);
+					employeeDAO.addEmployee(employee);
 				}catch(Exception e){
 					e.printStackTrace();
-				}finally{
 					request.setAttribute("error", "新增员工失败!");
+				}finally{
+					
 					dispatcher = servletContext.
 							getRequestDispatcher("/GetEmployee");
 				}

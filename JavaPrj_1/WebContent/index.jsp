@@ -25,6 +25,9 @@
 
 <body>
 <div id="topexplain">企业日常事务管理系统，为企业内部通信提供最简便的服务！</div>
+<c:if test="${!(empty employee) }">
+<div id="logout" style="text-align: right;" /><a urn="jsmenu5" href="Logout" rel="conmenu" >注销</a></div>
+</c:if>
 <div id="topmenu"><img src="images/banner.jpg" width="970" height="47" /></div>
 <div id="bookmunu">
 <div class="jsmenu" id="jsmenu">

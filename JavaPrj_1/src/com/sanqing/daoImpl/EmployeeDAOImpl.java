@@ -38,7 +38,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	public void deleteEmployee(int employeeID) {
-		
+		Connection conn = DBConnection.getConnection();
+		String deleteSQL = "delete from  tb_employee where employeeID=?";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(deleteSQL);
+			pstmt.setInt(1, employeeID);
+			pstmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 	}
 
 	public List<Employee> findAllEmployee(Page page) {
@@ -111,7 +124,36 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return employee;
 	}
 	public void updateEmployee(Employee employee) {
-		
+		Connection conn = DBConnection.getConnection();
+		String updateSQL = "update tb_employee set  employeeName = ?, "+
+													"employeeSex = ?,"+	
+													"employeeBirth = ?,"+
+													"employeePhone = ?,"+													
+													"employeePlace = ?,"+
+													"joinTime = ?,"+
+													"password = ?,"+
+													"isLead = ?"+
+													" where employeeID=?";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(updateSQL);
+			pstmt.setString(1, employee.getEmployeeName());
+			pstmt.setBoolean(2, employee.isEmployeeSex());
+			pstmt.setDate(3, new java.sql.Date(employee.getEmployeeBirth().getTime()));
+			pstmt.setString(4, employee.getEmployeePhone());
+			pstmt.setString(5, employee.getEmployeePlace());
+			pstmt.setDate(6, new java.sql.Date(employee.getJoinTime().getTime()));
+			pstmt.setString(7, employee.getPassword());
+			pstmt.setBoolean(8, employee.isLead());
+			pstmt.setInt(9,employee.getEmployeeID());
+			pstmt.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			DBConnection.close(pstmt);
+			DBConnection.close(conn);
+		}
 	}
 
 	@Override

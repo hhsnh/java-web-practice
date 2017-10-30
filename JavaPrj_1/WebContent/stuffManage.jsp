@@ -38,39 +38,54 @@
 <div id="channelleft">
 <div class="channelinleft">
 <div class="channeltit"></div>
-<table border="1">
-<tr>
-    <th>工号</th>
-    <th>姓名</th>
-    <th>性别</th>
-    <th>生日</th>
-    <th>电话</th>
-    <th>地址</th>
-    <th>入职时间</th>
-    <th>是否领导</th>
-  </tr>
-<c:forEach items="${requestScope.employeeList}" var="employee">
-  <tr>
-	<td>${employee.employeeID}</td>
-    <td>${employee.employeeName}</td>
-    <td>${employee.employeeSex ? "男" : "女"}</td>
-    <td>${employee.employeeBirth }</td>
-    <td>${employee.employeePhone }</td>
-    <td>${employee.employeePlace }</td>
-    <td>${employee.joinTime }</td>
-    <td>${employee.lead ? '是' : '否'}</td>
-  </tr>
-</c:forEach>
-</table>
-<div>
-<a href="addEmployee.jsp">添加员工</a>
+<div id = "employeeList">
+	<c:choose>
+		<c:when test="${empty sessionScope.employee }">
+			没有进行身份证，请先进行身份验证！
+		</c:when>
+		<c:when test="${!sessionScope.employee.lead }">
+			你不是领导层，无管理权限
+		</c:when>
+		<c:otherwise>
+			<table border="1">
+				<tr>
+				    <th>工号</th>
+				    <th>姓名</th>
+				    <th>性别</th>
+				    <th>生日</th>
+				    <th>电话</th>
+				    <th>地址</th>
+				    <th>入职时间</th>
+				    <th>是否领导</th>
+				  </tr>
+				<c:forEach items="${requestScope.employeeList}" var="employee">
+				  <tr>
+					<td>${employee.employeeID}</td>
+				    <td>${employee.employeeName}</td>
+				    <td>${employee.employeeSex ? "男" : "女"}</td>
+				    <td>${employee.employeeBirth }</td>
+				    <td>${employee.employeePhone }</td>
+				    <td>${employee.employeePlace }</td>
+				    <td>${employee.joinTime }</td>
+				    <td>${employee.lead ? '是' : '否'}</td>
+				    <td><a href="DeleteEmployee?employeeID=${employee.employeeID}">删除</a></td>
+				  </tr>
+				</c:forEach>
+			</table>
+		</c:otherwise>	
+	</c:choose>	
+	<div>
+		<a href="addEmployee.jsp">添加员工</a>
+	</div>
 </div>
+
+
 <div>
   <div align="center">
 	<c:choose>
 		<c:when test="${page.hasPrePage}">
-			<a href="GetMessageList?currentPage=1">首页</a> | 
-	<a href="GetMessageList?currentPage=${page.currentPage -1 }">上一页</a>
+			<a href="GetEmployee?currentPage=1">首页</a> | 
+			<a href="GetEmployee?currentPage=${page.currentPage -1 }">上一页</a>
 		</c:when>
 		<c:otherwise>
 			首页 | 上一页
@@ -78,8 +93,8 @@
 	</c:choose>
 	<c:choose>
 		<c:when test="${page.hasNextPage}">
-			<a href="GetMessageList?currentPage=${page.currentPage + 1 }">下一页</a> | 
-	<a href="GetMessageList?currentPage=${page.totalPage }">尾页</a>
+			<a href="GetEmployee?currentPage=${page.currentPage + 1 }">下一页</a> | 
+			<a href="GetEmployee?currentPage=${page.totalPage }">尾页</a>
 		</c:when>
 		<c:otherwise>
 			下一页 | 尾页
