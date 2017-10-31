@@ -57,6 +57,7 @@
 				    <th>地址</th>
 				    <th>入职时间</th>
 				    <th>是否领导</th>
+				    <th colspan="2">操作</th>
 				  </tr>
 				<c:forEach items="${requestScope.employeeList}" var="employee">
 				  <tr>
@@ -68,14 +69,15 @@
 				    <td>${employee.employeePlace }</td>
 				    <td>${employee.joinTime }</td>
 				    <td>${employee.lead ? '是' : '否'}</td>
-				    <td><a href="DeleteEmployee?employeeID=${employee.employeeID}">删除</a></td>
+			    	<td><a href="DeleteEmployee?employeeID=${employee.employeeID}">删除</a></td>
+				    <td><a href="PreUpdateEmployee?employeeID=${employee.employeeID}">更新</a></td>
 				  </tr>
 				</c:forEach>
 			</table>
 		</c:otherwise>	
 	</c:choose>	
 	<div>
-		<a href="addEmployee.jsp">添加员工</a>
+		<input type="button" onclick='location.href=("addEmployee.jsp")' value="添加员工" ></input>
 	</div>
 </div>
 

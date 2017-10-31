@@ -40,6 +40,23 @@
     <servlet-name>DeleteEmployee</servlet-name>
     <servlet-class>com.sanqing.servlet.DeleteEmployee</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpdateEmployee</servlet-name>
+    <servlet-class>com.sanqing.servlet.UpdateEmployee</servlet-class>
+  </servlet>  
+    <servlet>
+    <servlet-name>PreUpdateEmployee</servlet-name>
+    <servlet-class>com.sanqing.servlet.PreUpdateEmployee</servlet-class>
+  </servlet>
+
+<servlet-mapping>
+    <servlet-name>PreUpdateEmployee</servlet-name>
+    <url-pattern>/PreUpdateEmployee</url-pattern>
+</servlet-mapping> 
+<servlet-mapping>
+    <servlet-name>UpdateEmployee</servlet-name>
+    <url-pattern>/UpdateEmployeeAction</url-pattern>
+</servlet-mapping> 
 <servlet-mapping>
     <servlet-name>DeleteEmployee</servlet-name>
     <url-pattern>/DeleteEmployee</url-pattern>
