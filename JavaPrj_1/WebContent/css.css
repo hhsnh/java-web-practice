@@ -17,7 +17,7 @@ a:active{color:#123472; text-decoration: underline;}
 
 #topexplain{width:938px; height:25px; line-height:25px; margin:0 auto; padding:0 0 0 30px; border-right:1px solid #ddd; border-bottom:1px solid #ddd; border-left:1px solid #ddd; background-color:#F0F0F0;}
 
-#topmenu{width:970px; height:110px; margin:0 auto;}
+#topmenu{width:970px; height:147px; margin:0 auto;}
 #topmenu ul{margin:5px 0 0 80px; list-style:none;}
 #topmenu li{float:left;margin:0 30px; width:50px; height:80px; text-align:center;}
 #topmenu li.logo{width:221px;}
@@ -29,6 +29,7 @@ a:active{color:#123472; text-decoration: underline;}
 	margin:0;
 	float: right;
 	padding: 0;
+	z-index: 9999
 }
 .jsmenu ul{margin:0; padding:0; list-style:none;}
 .jsmenu ul li{float:left;margin:0 2px !important; margin:0 1px; text-align:center; display:block padding:0; width:93px; height:29px; line-height:29px; cursor:pointer;}
