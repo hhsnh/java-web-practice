@@ -44,11 +44,19 @@
     <servlet-name>UpdateEmployee</servlet-name>
     <servlet-class>com.sanqing.servlet.UpdateEmployee</servlet-class>
   </servlet>  
-    <servlet>
+  <servlet>
     <servlet-name>PreUpdateEmployee</servlet-name>
     <servlet-class>com.sanqing.servlet.PreUpdateEmployee</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>GetEmployeeById</servlet-name>
+    <servlet-class>com.sanqing.servlet.GetEmployeeById</servlet-class>
+  </servlet>
 
+<servlet-mapping>
+    <servlet-name>GetEmployeeById</servlet-name>
+    <url-pattern>/GetEmployeeByIdAction</url-pattern>
+</servlet-mapping> 
 <servlet-mapping>
     <servlet-name>PreUpdateEmployee</servlet-name>
     <url-pattern>/PreUpdateEmployee</url-pattern>

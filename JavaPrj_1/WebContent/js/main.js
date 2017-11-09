@@ -14,4 +14,22 @@ $(document).ready(function() {
             $button.after('<span>Message sent. We will contact you soon.</span>');
         }
     });
+    $('#sign-btn').on('click', function(e) {
+        $(e.currentTarget).closest('ul').hide();
+        $('form#signin').fadeIn('fast');
+    });
+    $('#account-tabs a').click(function (e) {
+    	e.preventDefault()
+    	$(this).tab('show')
+    });
+    
+    $('#setting-pills a').click(function (e) {
+    	e.preventDefault()
+    	$(this).tab('show')
+    });
+    
+    $('#security-tabs a').click(function (e) {
+    	e.preventDefault()
+    	$(this).tab('show')
+    });
 });

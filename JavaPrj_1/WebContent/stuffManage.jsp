@@ -9,6 +9,7 @@
 	<title>企业日常事务管理系统-消息列表</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/base.css" rel="stylesheet">
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js">
 </script>
@@ -47,7 +48,9 @@
 			你不是领导层，无管理权限
 		</c:when>
 		<c:otherwise>
-			<table class="table table-hover table-bordered table-striped">
+		<div class="row">
+			<div class="center-block">
+			<table class="table table-hover  table-striped">
 				<caption>员工列表</caption>
 				<thead >
 					<tr class="info">
@@ -79,11 +82,13 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			</div>
+			</div>
 		</c:otherwise>	
 	</c:choose>	
-		<div class="center-block">
-		<button type="button" onclick='location.href=("addEmployee.jsp")' class="btn btn-primary">添加员工</button>
-		</div>
+	<div class="center-block">
+	<button type="button" onclick='location.href=("addEmployee.jsp")' class="btn btn-primary">添加员工</button>
+	</div>
 	<div class="center-block">
 	  <ul class="pagination">
 	  	<li><a href="GetEmployee?currentPage=1">首页</a></li> 
